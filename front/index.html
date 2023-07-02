@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compartir Cuarto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f6f28e61f7.js" crossorigin="anonymous"></script>
+
+    <style>
+      body {
+        text-align: center;
+        color: white;
+        text-shadow: 0px 0px 3px black;
+        background: #620930;
+      }
+
+      .modal-body {
+        color: black;
+        text-shadow: none;
+      }
+
+      button {
+        background: #cd9d00 !important;
+      }
+      i {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <!--:::::::::::::::::::::::::::ROOMMATES::::::::::::::::::::::::::::::::::::::::-->
+  <body class="p-4">
+    <h1 class="">Rommates</h1>
+    <hr class="mb-5 bg-light w-25 mx-auto" />
+    <div class="row w-100 m-auto">
+      <div class="col-4"> 
+        <h5>Roommate</h5>
+        <button class="btn text-white mb-2" data-bs-toggle="modal" data-bs-target="#modalRoommate">
+          Agregar Roommate
+        </button>
+        <table class="table">
+          <thead class="text-white">
+            <th>N°</th>
+            <th>Nombre</th>
+            <th>Saldo Actual</th>
+            <th>Cuota de arriendo</th>
+          </thead>
+          <tbody class="text-white" id="infoTable">
+            <tr>
+              <td>Juan Gonzales</td>
+              <td class="text-danger">-12500</td>
+              <td class="text-success">100000</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <!--::::::::::::::::::::::::::GASTOS:::::::::::::::::::::::::.-->
+      <div class="col-4">
+        <div class="border rounded p-2 m-auto p-4">
+          <h4>Agregar Gasto</h4>
+          <hr class="bg-light w-25 mx-auto" />
+          <form action="" id="formularioGastos">
+          <div class="d-flex flex-column align-items-center">
+            <h6>Roommate</h6>
+            <select
+              class="form-control w-50 mb-2"
+              id="roommatesSelect"
+            >
+            <!--------------------SELECT COMPAÑERO DE CUARTO- GASTOS-------------->
+            <option value="" selected hidden disabled>Seleccione Roommate</option>
+            </select>
+            <h6>Descripción</h6>
+            <textarea class="form-control w-50 mb-2" id="descripcionGasto">
+Articulos de aseo personal</textarea
+            >
+
+            <h6>Monto:</h6>
+            <input
+              class="form-control w-50 mb-2"
+              id="montoGasto"
+              type="number"
+              value="50000"
+            />
+          </div>
+          <div class="d-block my-1">
+            <button class="btn text-white m-auto" type="submit">
+              Agregar
+            </button>
+          </div>
+        </form>
+        </div>
+      </div>
+
+      <!--:::::::::::::::::::::::::HISTORIAL:::::::::::::::::::::::::::::::::::::::::::.-->
+      <div class="col-4">
+        <div>
+          <h4>Historial</h4>
+          <hr class="bg-light w-25 mx-auto" />
+
+          <table class="table">
+            <thead class="text-white">
+              <th>Nombre</th>
+              <th>Comentario</th>
+              <th>Monto</th>
+              <th>-</th>
+            </thead>
+            <tbody class="text-white" id="gastosHistorial">
+              <tr>
+                <td>Juan Gonzales</td>
+                <td>Articulos de aseo personal</td>
+                <td>50000</td>
+                <td class="d-flex align-items-center justify-content-between">
+                  <i class="fas fa-edit text-warning" data-toggle="modal" data-target="ModalRoommate"></i>
+                  <i class="fas fa-trash-alt text-danger"></i>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+
+    <!--:::::::::::::::::::::::MODAL ROOMATE: FORMULARIO :::::::::::::::::::::::::::::::::-->
+    <div
+      class="modal fade"
+      id="modalRoommate"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalRoommatelabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="border rounded p-2 m-auto p-4">
+              <h4>Editar Gasto</h4>
+              <hr class="bg-light w-25 mx-auto" />
+              <form action="#" id="formularioModalRoomate">
+              <div class="d-flex flex-column align-items-center">
+                <h6>Compañero de cuarto</h6>
+                
+                <h6>Nombre</h6>
+                <input type="text" class="form-control"id="roommateModalNombre">
+                <h6>Saldo</h6></input>
+                <input type="number" class="form-control mb-2" id="roommateModalSaldo">
+                <h6>Cuota</h6>
+                <input type="number" class="form-control mb-2" id="roommateModalCuota">
+                </div>
+              <div class="d-block my-1">
+                <button class="btn text-white m-auto" type="submit">
+                  Agregar
+                </button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!--:::::::::::::::::::::::MODAL GASTOS :::::::::::::::::::::::::::::::::-->
+        <div
+        class="modal fade"
+        id="modalEditGastos"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalEditGastoslabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="border rounded p-2 m-auto p-4">
+                <h4>Editar Gasto</h4>
+                <hr class="bg-light w-25 mx-auto" />
+               <!--APERTURA FORM MODAL GASTOS-->
+                <form action="" id="formularioEditGastos">
+                  <input type="hidden" id="idGasto" disabled>
+                  <div class="d-flex flex-column align-items-center">
+                    <h6>Nombre</h6>
+                    <select
+                      class="form-control w-50 mb-2"
+                      id="roommatesEditSelect"
+                      disabled
+                    >
+                    <!--------------------SELECT COMPAÑERO DE CUARTO- GASTOS-------------->
+                    <option value="" selected hidden disabled>Seleccione Roommate</option>
+                    </select>
+                    <h6>Descripción/Comentario</h6>
+                    <textarea class="form-control w-50 mb-2" id="descripcionEditGastos">
+        Articulos de aseo personal</textarea
+                    >
+        
+                    <h6>Monto:</h6>
+                    <input
+                      class="form-control w-50 mb-2"
+                      id="montoEditGastos"
+                      type="number"
+                      value="50000"
+                    />
+                  </div>
+                  <div class="d-block my-1">
+                    <button class="btn text-white m-auto" type="submit">
+                      Agregar
+                    </button>
+                  </div>
+                </form>
+                <!--CIERRE FORMULARIO MODAL GASTOS-->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="/node_modules/axios/dist/axios.js"></script>
+    <script src="/front/assets/js/app.js" type="module"></script>
+   
+  </body>
+</html>
+
+
+
