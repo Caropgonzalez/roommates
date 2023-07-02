@@ -43,13 +43,13 @@ export async function getGastosHandler( req, res){
 export async function putGastosHandler( req, res){
     try{
         await bodyParser(req)
-        const { id,nombre,comentario,monto } = req.body
+        const { id,nombre,descripcion,monto } = req.body
 
         let gastos = databaseGastos;
         gastos = gastos.map((d)=>{
             if( d.id == id){
                 d.nombre = nombre
-                d.comentario = comentario
+                d.descripcion = descripcion
                 d.monto = monto
                 return d
             }
@@ -77,7 +77,7 @@ export async function deleteGastosHandler( req,res){
         gastos.map((d,index)=>{
             if(d.id == id){
                 gastos.splice(index,1);
-                fs.writeFileSync('db/data.json', JSON.stringify(gastos))
+                fs.writeFileSync('db/gastos.json', JSON.stringify(gastos))
             }
         })
         res.end();

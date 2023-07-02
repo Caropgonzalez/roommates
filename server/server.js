@@ -8,7 +8,9 @@ import {
 
 import {
     postGastosHandler,
-    getGastosHandler
+    getGastosHandler,
+    putGastosHandler,
+    deleteGastosHandler
 } from './utilities/gastos.js'
 
 import axios from 'axios';
@@ -73,18 +75,19 @@ http
                 }
                 if(url === '/agregarGasto'){
                     postGastosHandler( req, res )
-                console.log(req)
                 }
              break  
              case 'PUT':
-                if(url === '/editar'){
-                    
+                if(url === '/editarGasto'){
+                    putGastosHandler(req, res)
                 }
              break 
              case 'DELETE':
-                if(url === '/eliminar'){
-                    
+                
+                if(url === '/eliminarGasto'){
+                    deleteGastosHandler(req,res)
                 }
+
              break  
             default:
                 break;
